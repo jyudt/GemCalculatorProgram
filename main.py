@@ -117,7 +117,9 @@ for recipe in bins:
     if recipe not in uniqueList and sum(recipe) == 40:
         uniqueList.append(recipe)
 
+print("======================")
 for recipe in uniqueList:
     print("Qual: " + ', '.join(str(x) for x in recipe) + " x" + str(bins.count(recipe)))
+print("======================")
 
-print("===== list\n", gemQualityList, "\n", bins)
+#print("===== list\n", gemQualityList, "\n", bins)
