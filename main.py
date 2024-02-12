@@ -1,17 +1,28 @@
 import cloudscraper
 import binpacking
+import configparser
+
+
+
+# config
+config = configparser.ConfigParser()
+config.read('configurations.ini')
+
+accountName = config["Private Info"]["accountName"]
+poesessid = config["Private Info"]["poesessid"]
 
 
 # private info
-accountName = "JustCallMeJick"
-poesessid = ""
+#accountName = "JustCallMeJick"
+#poesessid = ""
 
-url = "https://www.pathofexile.com/character-window/get-stash-items"
-league = "Affliction"
-realm = "pc"
-tabNamesToCheck = ["4", "2"]
+url = config["Public Info"]["url"]
+league = config["Public Info"]["league"]
+realm = config["Public Info"]["realm"]
+tabNamesToCheck = config["Public Info"]["tabNamesToCheck"]
 tabIndices = []
 gemQualityList = []
+
 
 params = {
     'accountName': accountName,
@@ -71,7 +82,7 @@ class VendorSet:
 try:
     allTabs = get_tabs()['tabs']
 except:
-    print("rate limited, try later")
+    print("Error: rate limited (probably), try later")
     exit(-1)
 
 for name in tabNamesToCheck:
@@ -80,7 +91,8 @@ for name in tabNamesToCheck:
         if name == tab['n']:
             index = tab['i']
             break
-    tabIndices.append(index)
+    if (index >= 0):
+        tabIndices.append(index)
 
 tabsToCheck = []
 
