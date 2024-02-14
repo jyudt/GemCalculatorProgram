@@ -10,16 +10,11 @@ config.read('configurations.ini')
 
 accountName = config["Private Info"]["accountName"]
 poesessid = config["Private Info"]["poesessid"]
-
-
-# private info
-#accountName = "JustCallMeJick"
-#poesessid = ""
+tabNamesToCheck = config["Private Info"]["tabNamesToCheck"].split(",")
 
 url = config["Public Info"]["url"]
 league = config["Public Info"]["league"]
 realm = config["Public Info"]["realm"]
-tabNamesToCheck = config["Public Info"]["tabNamesToCheck"]
 tabIndices = []
 gemQualityList = []
 
